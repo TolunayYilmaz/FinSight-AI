@@ -42,7 +42,8 @@ public class AuthServiceImpl implements AuthService{
         User user = new User();
         user.setUserName(registerRequest.userName());
         user.setEmail(registerRequest.email());
-        user.setPassword(registerRequest.password());
+        user.setPassword(encodedPasword);
+        userRepository.save(user);
         return new RegisterResponse(user.getEmail(),"Kullanıcı başarı ile kayıt olmuştur");
 
     }
@@ -58,6 +59,6 @@ public class AuthServiceImpl implements AuthService{
         }
 
 
-        return new LoginResponse(optionalUser.get().getEmail(),"Kullanıcı Başarı ile giriş yapt");
+        return new LoginResponse(optionalUser.get().getEmail(),"Kullanıcı Başarı ile giriş yaptı",optionalUser.get().getPassword());
     }
 }
