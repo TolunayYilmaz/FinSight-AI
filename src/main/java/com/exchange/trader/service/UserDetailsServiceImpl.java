@@ -13,6 +13,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private final com.exchange.trader.repository.UserRepository userRepository;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findbyEmail(username).orElseThrow(()->new UsernameNotFoundException("User not found"));
+        return userRepository.findByEmail(username).orElseThrow(()->new UsernameNotFoundException("User not found"));
     }
 }

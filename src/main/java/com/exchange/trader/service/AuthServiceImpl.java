@@ -29,7 +29,7 @@ public class AuthServiceImpl implements AuthService{
 
     @Override
     public RegisterResponse register(RegisterRequest registerRequest) {
-        Optional<User> optionalUser = userRepository.findbyEmail(registerRequest.email());
+        Optional<User> optionalUser = userRepository.findByEmail(registerRequest.email());
         if(optionalUser.isPresent()){
            System.out.println("Kullanıcı bulunuyor");
         }
@@ -50,7 +50,7 @@ public class AuthServiceImpl implements AuthService{
 
     @Override
     public LoginResponse login(LoginRequest loginRequest) {
-        Optional<User> optionalUser =userRepository.findbyEmail(loginRequest.email());
+        Optional<User> optionalUser =userRepository.findByEmail(loginRequest.email());
         if (optionalUser.isEmpty()){
             System.out.println("Kullanıcı yok");
         }
